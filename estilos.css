@@ -23,3 +23,13 @@ h1{
     height: 100%;
     background-color: #E5E5E5;
 }
+
+@media(max-width: 600px){
+    .topo{
+        width: 100%;
+    }
+
+    .containerprincipal{
+        flex-direction: column;
+    }
+}
