@@ -1,7 +1,9 @@
-
+.corpo{
+    font-family:'Roboto';
+}
 
 .topo{
-    width: 1440px;
+    width: 100%;
     height: 69px;
     background-color: #EC362D;
 
@@ -13,7 +15,6 @@
 h1{
     font-size: 37px;
     color: #FFFFFF;
-    font-family:'Roboto';
     font-weight: bold;
     
 }
@@ -22,6 +23,71 @@ h1{
     width: 100%;
     height: 100%;
     background-color: #E5E5E5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.inicioquizz{
+    width: 1051px;
+    height: 181px;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #D4D4D4;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    display: none;
+}
+.naocriouquizz{
+    width: 250px;
+    height: 107px;
+    color: #B9B9B9;
+    font-size: 22px;
+    font-style: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.criarquizz{
+    color: #EC362D;
+    width: 136px;
+    height: 40px;
+    font-size: 18px;
+    border-style:dashed ;
+    border-width: 1px;
+    border-color: #EC362D;
+    border-radius: 50px;
+
+}
+
+.quizzCriado{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.quizzUsuario{
+    display: flex;
+}
+
+h4{
+    font-weight: bold;
+    margin-right: 17px;
+}
+
+.quizzUsuario>button{
+    background-color: #EC362D;
+    color: #FFFFFF;
+    border-radius: 2px;
+    border: none;
 }
 
 @media(max-width: 400px){
