@@ -112,16 +112,18 @@ h4{
 
 .quizz{
     width: 30%;
+    height: 160px;
     margin: 10px 0;
     position: relative;
     display: flex;
     justify-content: center;
     background-image: linear-gradient(180deg, rgb(29, 28, 28) 10%, rgb(29, 28, 28) 100%);
-    border-radius: 3px; 
+    border-radius: 5px; 
 }
 .quizz img {
     width: 100%;
-    border-radius: 3px; 
+    
+    border-radius: 5px; 
     -webkit-mask-image: linear-gradient(to top, transparent 5%, black 50%);
 }
 
@@ -134,6 +136,10 @@ h4{
     word-break: break-all;
     color: #FFFFFF;
     font-family: "Roboto";
+}
+
+.quizz:hover{
+    cursor: pointer;
 }
 
 @media(max-width: 400px){
