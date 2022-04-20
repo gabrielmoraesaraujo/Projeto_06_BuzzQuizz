@@ -1,5 +1,6 @@
 .corpo{
     font-family:'Roboto';
+    background-color: #E5E5E5;
 }
 *{
     box-sizing: border-box;
@@ -29,8 +30,9 @@ h1{
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items:center;
+    
 }
 .inicioquizz{
     margin-top: 30px;
@@ -40,11 +42,14 @@ h1{
     border-width: 2px;
     border-color: #D4D4D4;
     border-radius: 5px;
+    margin-top: 77px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    display: none;
 
 }
 .naocriouquizz{
@@ -72,14 +77,23 @@ h1{
 }
 
 .quizzCriado{
+    
     display: flex;
-    display: none;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 70px;
+    width: 900px;
+    background-color: red;
+}
+
+.quizzCriado img{
+    width: 2px;
 }
 
 .quizzUsuario{
     display: flex;
+    justify-content: flex-start;
+    
 }
 
 h4{
@@ -90,9 +104,17 @@ h4{
 .quizzUsuario>button{
     background-color: #EC362D;
     color: #FFFFFF;
-    border-radius: 2px;
+    border-radius:50%;
     border: none;
 }
+.quizzesdoUsuario{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    margin: 10px 0;
+}
+
 
 .caixa{
     width: 900px;
