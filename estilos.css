@@ -1,4 +1,6 @@
-
+*{
+    box-sizing: border-box;
+}
 
 .topo{
     width: 1440px;
@@ -22,6 +24,35 @@ h1{
     width: 100%;
     height: 100%;
     background-color: #E5E5E5;
+}
+
+.novosQuizz{
+    
+}
+
+.quizz{
+    width: 20%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(180deg, rgb(29, 28, 28) 10%, rgb(29, 28, 28) 100%);
+    border-radius: 5px; 
+}
+.quizz img {
+    width: 100%;
+    border-radius: 5px; 
+    -webkit-mask-image: linear-gradient(to top, transparent 5%, black 50%);
+}
+
+.quizz div{
+    position: absolute;
+    bottom: 5%;
+    height: 20%;
+    width: 90%;
+    font-size: 13px;
+    word-break: break-all;
+    color: #FFFFFF;
+    font-family: "Roboto";
 }
 
 @media(max-width: 400px){
