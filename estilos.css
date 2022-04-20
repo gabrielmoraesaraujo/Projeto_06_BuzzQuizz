@@ -26,8 +26,9 @@ h1{
     background-color: #E5E5E5;
 }
 
-.novosQuizz{
-    
+.novosQuizzes{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .quizz{
