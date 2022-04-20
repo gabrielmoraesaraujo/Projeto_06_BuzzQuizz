@@ -100,7 +100,7 @@ h4{
 }
 
 .textoquizzes{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -143,11 +143,28 @@ h4{
 }
 
 @media(max-width: 400px){
+    .corpo{
+        overflow-x: hidden;
+    }
     .topo{
         width: 100%;
     }
 
     .containerprincipal{
         flex-direction: column;
+    }
+
+    .caixa{
+        width: 90%;
+    }
+
+    .novosQuizzes{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .quizz{
+        width: 100%;
+        height: 160px;
     }
 }
