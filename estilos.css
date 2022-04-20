@@ -24,7 +24,7 @@ h1{
     background-color: #E5E5E5;
 }
 
-@media(max-width: 600px){
+@media(max-width: 400px){
     .topo{
         width: 100%;
     }
