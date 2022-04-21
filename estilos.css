@@ -39,21 +39,18 @@ h1{
 
 }
 .inicioquizz{
-    margin-top: 30px;
+    margin-top: 107px;
     width: 900px;
     height: 181px;
     border-style: dashed;
     border-width: 2px;
     border-color: #D4D4D4;
-    border-radius: 5px;
-    margin-top: 77px;
-
+    border-radius: 5px;    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    display: none;
 
 }
 .naocriouquizz{
@@ -78,6 +75,10 @@ h1{
     border-color: #EC362D;
     border-radius: 50px;
 
+}
+
+.criarquizz:hover{
+    cursor: pointer;
 }
 
 .quizzCriado{
@@ -125,7 +126,6 @@ h4{
 .caixa{
     width: 900px;
     margin: 40px;
-    display: none;
 }
 
 .textoquizzes{
@@ -178,15 +178,13 @@ h4{
     align-items: center;
     width: 80%;
 
-
-    display: none;
 }
 
 .frase{
     font-size: 23px;
     line-height: 27px;
     font-weight: 700;   
-    margin: 60px 0;
+    margin: 60px 0 30px 0;
 }
 .informacoes-basicas form{
     background-color: rgb(255, 255, 255);
@@ -219,6 +217,8 @@ h4{
     flex-direction: column;
     align-items: center;
     width: 40%;
+
+    display: none;
 }
 
 .pergunta{
@@ -262,10 +262,13 @@ h4{
     color: white;
     border-radius: 10px;
 }
-
 .button-perguntas:hover{
     background-color: #c2251d;
     cursor: pointer;
+}
+
+.escondido{
+    display: none;
 }
 
 input{

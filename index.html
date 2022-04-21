@@ -22,44 +22,44 @@
         </div>
         <!-- Container Principal  -->
         <div class="containerprincipal">
-
-            <!-- Criar Quizz caso não tenha nenhum-->
-            <div class="inicioquizz">
-                <div class="naocriouquizz">Você não criou nenhum <spnan>quizz ainda :(</spnan></div>
-                <button class="criarquizz"> Criar Quizz</button>
-            </div>
-            <div class="quizzCriado">
-                <div class="quizzUsuario">
-                    <h4>Seus Quizzes</h4> <button>+</button>
+            <div class="tela1">
+                <!-- Criar Quizz caso não tenha nenhum-->
+                <div class="inicioquizz">
+                    <div class="naocriouquizz">Você não criou nenhum <spnan>quizz ainda :(</spnan></div>
+                    <button class="criarquizz" onclick="chamarTela2()"> Criar Quizz</button>
                 </div>
-                <ul class="quizzesdoUsuario">
-                    <li class="quizz">
-                        <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
-                        <div>Futurama Muito brabo</div>
-                    </li> 
+                <div class="quizzCriado">
+                    <div class="quizzUsuario">
+                        <h4>Seus Quizzes</h4> <button>+</button>
+                    </div>
+                    <ul class="quizzesdoUsuario">
+                        <li class="quizz">
+                            <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
+                            <div>Futurama Muito brabo</div>
+                        </li> 
 
-                    <li class="quizz">
-                        <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
-                        <div>Futurama Muito brabo</div>
-                    </li> 
+                        <li class="quizz">
+                            <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
+                            <div>Futurama Muito brabo</div>
+                        </li> 
 
-                    <li class="quizz">
-                        <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
-                        <div>Futurama Muito brabo</div>
-                    </li> 
-                        
-                </ul>
+                        <li class="quizz">
+                            <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
+                            <div>Futurama Muito brabo</div>
+                        </li> 
+                            
+                    </ul>
+                </div>
+                <!-- Onde fica todos os Quizz -->
+                <div class="caixa">
+                    <div class="textoquizzes">Todos os Quizzes</div>
+                    <ul class="novosQuizzes">
+
+                    </ul>
+                </div>
             </div>
-            <!-- Onde fica todos os Quizz -->
-            <div class="caixa">
-                <div class="textoquizzes">Todos os Quizzes</div>
-                <ul class="novosQuizzes">
-
-                </ul>
-            </div>
-
             <!-- Desktop 8 Página de Criar as informações básicas do Quizz (Titulo, URL..) -->
-            <div class="informacoes-basicas">
+            <div class="informacoes-basicas escondido">
                 <div class="frase">Comece pelo começo</div>
                 <form action="">
                     <input type="text" class="titulo-form" placeholder="Titulo do seu quizz">
