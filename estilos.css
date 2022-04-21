@@ -177,9 +177,12 @@ h4{
     flex-direction: column;
     align-items: center;
     width: 80%;
+
+
+    display: none;
 }
 
-.informacoes-basicas .frase{
+.frase{
     font-size: 23px;
     line-height: 27px;
     font-weight: 700;   
@@ -194,17 +197,6 @@ h4{
     padding: 20px 0;
 }
 
-.informacoes-basicas input{
-   width: 95%;
-   height: 40px;
-   margin: 5px 0;
-   border: 1px solid #D1D1D1;
-   border-radius: 5px;
-   padding: 0 20px;
-   font-weight: 400;
-   font-style: italic;
-}
-
 .button-form{
     margin: 40px 0;
     width: 25%;
@@ -214,12 +206,79 @@ h4{
     align-items: center;
     justify-content: center;
     font-weight: 400;
+    text-align: center;
     color: white;
     border-radius: 10px;
 }
 .button-form:hover{
     background-color: #c2251d;
 }
+
+.desktop-9{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.pergunta{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 20px 20px;
+}
+
+.numero-pergunta{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+
+.pergunta form{
+    display: flex;
+    flex-direction: column;
+}
+
+.pergunta label{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.mini-container{
+    margin: 10px 0;
+}
+
+.button-perguntas{
+    margin: 40px 0;
+    width: 50%;
+    height: 40px;
+    background-color: #ec362d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+}
+
+.button-perguntas:hover{
+    background-color: #c2251d;
+    cursor: pointer;
+}
+
+input{
+
+    width: 95%;
+    height: 40px;
+    margin: 5px auto;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-weight: 400;
+    font-style: italic;
+ }
 
 @media(max-width: 400px){
     .corpo{
