@@ -1,3 +1,6 @@
+body{
+    background-color: #E5E5E5;
+}
 .corpo{
     font-family:'Roboto';
     background-color: #E5E5E5;
@@ -21,6 +24,15 @@ h1{
     color: #FFFFFF;
     font-weight: bold;
     
+}
+
+.escondido{
+    display: none;
+    background-color: red;
+}
+
+.teste{
+    background-color: red;
 }
 
 .containerprincipal{
@@ -47,9 +59,7 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
-    display: none;
+    justify-content: center;    
 
 }
 .naocriouquizz{
