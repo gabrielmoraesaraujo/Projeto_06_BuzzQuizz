@@ -1,7 +1,72 @@
 let quizzes;
+const API = 'https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes';
+let tela1;
 
-let quizzesdoUsuario = ["lala","lalala"];
-const API = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes';
+function iniciarPagina(){  
+    tela1 = document.querySelector('.containerprincipal');
+    console.log(tela1);
+    pegarQuizz();
+    tela1.innerHTML = 
+    `   
+        ${verificaQuizzUsuario()}
+        <div class="tela1">
+            
+            <!-- Onde fica todos os Quizz -->
+            <div class="caixa">
+                <div class="textoquizzes">Todos os Quizzes</div>
+                <ul class="novosQuizzes">
+
+                </ul>
+            </div>
+        </div>
+    `
+}
+
+function verificaQuizzUsuario(){
+    if(false){
+        return usuarioTemQuizz();
+    }else{
+        return usuarioNaoTemQuizz();
+    }
+}
+
+function usuarioTemQuizz(){
+    return `
+        <div class="quizzCriado">
+            <div class="quizzUsuario">
+                <h4>Seus Quizzes</h4>
+                <ion-icon name="add-circle" onclick="chamar()"></ion-icon>
+            </div>
+            <ul class="quizzesdoUsuario">
+                <li class="quizz">
+                    <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
+                    <div>Futurama Muito brabo</div>
+                </li> 
+
+                <li class="quizz">
+                    <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
+                    <div>Futurama Muito brabo</div>
+                </li> 
+
+                <li class="quizz">
+                    <img src="https://poltronanerd.com.br/wp-content/uploads/2022/02/poltrona-futura-nova-temporada.jpg">
+                    <div>Futurama Muito brabo</div>
+                </li> 
+                    
+            </ul>
+        </div>
+    `
+}
+
+function usuarioNaoTemQuizz(){
+    return `
+        <div class="inicioquizz">
+            <div class="naocriouquizz">Você não criou nenhum <spnan>quizz ainda :(</spnan></div>
+            <button class="criarquizz" onclick="chamarTela2()"> Criar Quizz</button>
+        </div>
+    `
+}
+
 function mostrarQuizz(resposta){
     const caixa = document.querySelector('.novosQuizzes');
     for(let i = 0; i < resposta.data.length; i++){
@@ -26,37 +91,61 @@ function pegarQuizz(){
     quizzes.catch(mostrarErro);
 }
 
-//As funções add e remove não estão funcionando como deveriam na hora de esconder as div
-iniciar();
-
-function iniciar(){
-    if(quizzesdoUsuario.length===0){
-       const escondido = document.querySelector(".inicioquizz");
-       escondido.classList.remove("escondido"); 
-      } else { 
-               const escondido = document.querySelector(".quizzCriado");                
-               escondido.classList.remove("escondido"); 
-               console.log(escondido);
-
-    }
-    pegarQuizz();
-}
-
 function mostrarErro(){
     alert('Deu algum erro :(');s
 }
 
-function newQuizz(){
-    
-    escondido = document.querySelector(".inicioquizz");
-    escondido.classList.remove("inicioquizz")
-    escondido.classList.add("escondido");
-    const caixa = document.querySelector(".caixa");    
-    caixa.classList.add("escondido");
-    const quizzCriado = document.querySelector(".quizzCriado");
-    quizzCriado.classList.add("escondido");
+
+
+// Quando clica nos botões de criar novos quizzes
+function chamarTela2(){
+    removerTela1() 
+    const tela2 = document.querySelector('.containerprincipal');
+    // Desktop 8 Página de Criar as informações básicas do Quizz (Titulo, URL..) 
+    tela2.innerHTML = 
+    `
+        <div class="informacoes-basicas">
+            <div class="frase">Comece pelo começo</div>
+            <form action="">
+                <input type="text" class="titulo-form" placeholder="Titulo do seu quizz">
+                <input type="url" class="url-form" placeholder="URL da imagem do seu quizz">
+                <input type="text" class="qnt-perguntas-form" placeholder="Quantidade de perguntas do quizz">
+                <input type="text" class="qnt-niveis-form" placeholder="Quantidade de níveis do quizz">
+            </form>
+            <div class="button-form">Prosseguir pra criar perguntas</div>
+        </div>
+    `
+}
+// É chamado sempre que executa a função chamarTela2
+function removerTela1(){
+    const tela1 = document.querySelector('.tela1');
+    tela1.classList.add('escondido');
+}
+
+// Função de animação de edição da criação de perguntas
+function animação(){
+    tirarIcon()
+    const abrirContainer = document.querySelector('.numero-pergunta');
+    abrirContainer.innerHTML =
+    `
+    <form action="">
+        <div class="mini-container">
+            <input type="text" placeholder="Título do nível">
+            <input type="text" placeholder="% de acerto mínima">
+            <input type="text" placeholder="URL da imagem do nível">
+            <input type="text" placeholder="Descrição do nível">
+        </div>
+    </form>
+    `
+}
+
+
+
+function chamarTela5(){
 
 }
 
 
 
+
+iniciarPagina();

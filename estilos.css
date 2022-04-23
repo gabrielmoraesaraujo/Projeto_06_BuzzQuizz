@@ -8,6 +8,13 @@ body{
 *{
     box-sizing: border-box;
 }
+.tela1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    display: none;
+}
 
 .topo{
     width: 100%;
@@ -45,21 +52,21 @@ h1{
     justify-content: space-evenly;
     align-items:center;
     
+
 }
 .inicioquizz{
-    margin-top: 30px;
+    margin-top: 107px;
     width: 900px;
     height: 181px;
     border-style: dashed;
     border-width: 2px;
     border-color: #D4D4D4;
-    border-radius: 5px;
-    margin-top: 77px;
-
+    border-radius: 5px;    
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
+display: none;
 
 }
 .naocriouquizz{
@@ -86,6 +93,10 @@ h1{
 
 }
 
+.criarquizz:hover{
+    cursor: pointer;
+}
+
 .quizzCriado{
     
     display: flex;
@@ -93,7 +104,8 @@ h1{
     align-items: flex-start;
     margin-top: 70px;
     width: 900px;
-    background-color: red;
+
+
 }
 
 .quizzCriado img{
@@ -103,7 +115,7 @@ h1{
 .quizzUsuario{
     display: flex;
     justify-content: flex-start;
-    
+    align-items: center;
 }
 
 h4{
@@ -111,12 +123,16 @@ h4{
     margin-right: 17px;
 }
 
-.quizzUsuario>button{
-    background-color: #EC362D;
-    color: #FFFFFF;
-    border-radius:50%;
-    border: none;
+.quizzUsuario ion-icon{
+    font-size: 25px;
+    color: #EC362D;
 }
+
+.quizzUsuario ion-icon:hover{
+    cursor: pointer;
+    color: #8f1812;
+}
+
 .quizzesdoUsuario{
     display: flex;
     justify-content: space-between;
@@ -173,6 +189,118 @@ h4{
 .quizz:hover{
     cursor: pointer;
 }
+
+
+.informacoes-basicas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+
+}
+
+.frase{
+    font-size: 23px;
+    line-height: 27px;
+    font-weight: 700;   
+    margin: 60px 0 30px 0;
+}
+.informacoes-basicas form{
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.button-form{
+    margin: 40px 0;
+    width: 25%;
+    height: 40px;
+    background-color: #EC362D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+}
+.button-form:hover{
+    background-color: #c2251d;
+}
+
+.desktop-9{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+
+    display: none;
+}
+
+.pergunta{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 20px 20px;
+}
+
+.numero-pergunta{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+
+.pergunta form{
+    display: flex;
+    flex-direction: column;
+}
+
+.pergunta label{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.mini-container{
+    margin: 10px 0;
+}
+
+.button-perguntas{
+    margin: 40px 0;
+    width: 50%;
+    height: 40px;
+    background-color: #ec362d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+}
+.button-perguntas:hover{
+    background-color: #c2251d;
+    cursor: pointer;
+}
+
+.escondido{
+    display: none;
+}
+
+input{
+
+    width: 95%;
+    height: 40px;
+    margin: 5px auto;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-weight: 400;
+    font-style: italic;
+ }
 
 @media(max-width: 400px){
     .corpo{
