@@ -80,6 +80,7 @@ function mostrarQuizz(resposta){
                     <div>${resposta.data[i].title}</div>
                 </li>   
             `
+            
     }
     
 }
@@ -92,8 +93,9 @@ function pegarQuizz(){
 }
 
 function mostrarErro(){
-    alert('Deu algum erro :(');
+    alert('Deu algum erro :(');s
 }
+
 
 
 // Quando clica nos botões de criar novos quizzes
@@ -149,9 +151,40 @@ function chamarCriarPerguntas(){
                 </form>
 
             </div>
-            <div class="button-perguntas" onclick="chamarQuizzPronto()">Prosseguir para criar níveis</div>
+            <div class="button-perguntas" onclick="chamarNiveis()">Prosseguir para criar níveis</div>
         </div>
     `
+}
+
+function chamarNiveis(){
+    containerPrincipal.innerHTML = `
+    <div class="desktop-10">
+                <div class="frase">Agora, decida os níveis</div>
+                <div class="pergunta">
+                    <div class="numero-pergunta">Nível 1</div>
+                    <form action="">
+                        <div class="mini-container">
+                            <input type="text" placeholder="Título do nível">
+                            <input type="text" placeholder="% de acerto mínima">
+                            <input type="text" placeholder="URL da imagem do nível">
+                            <input type="text" placeholder="Descrição do nível">
+                        </div>
+                    </form>
+                    <div class="pergunta icon">
+                        <div class="numero-pergunta">Nível 2</div>
+                        <ion-icon name="create-outline" onclick="animeNiveis()"></ion-icon>
+                    </div>
+                    <div class="pergunta icon">
+                        <div class="numero-pergunta">Nível 3</div>
+                        <ion-icon name="create-outline" onclick="animeNiveis()"></ion-icon>
+                    </div>
+                    
+                </div>
+                <div class="button-perguntas" onclick="chamarQuizzPronto()">Finalizar Quizz</div>
+            </div>
+    `
+
+
 }
 
 function chamarQuizzPronto(){
@@ -168,5 +201,27 @@ function chamarQuizzPronto(){
     `
 }
 
+// Função de animação de edição da criação de perguntas
+function animeNiveis(){
+    tirarIcon()
+    const abrirContainer = document.querySelector('.numero-pergunta');
+    abrirContainer.innerHTML =
+    `
+    <form action="">
+        <div class="mini-container">
+            <input type="text" placeholder="Título do nível">
+            <input type="text" placeholder="% de acerto mínima">
+            <input type="text" placeholder="URL da imagem do nível">
+            <input type="text" placeholder="Descrição do nível">
+        </div>
+    </form>
+    `
+}
+
+
+
+function chamarTela5(){
+
+}
 
 iniciarPagina();
