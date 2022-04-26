@@ -2,8 +2,15 @@ let quizzes;
 const API = 'https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes';
 let tela1;
 let containerPrincipal = document.querySelector('.containerprincipal');
+let questions = 0;
+let levels = 0;
+let  meuQuizz = {}; 
+let promise = 0;
+let array = [];
+let id = [];
 
-function iniciarPagina(){  
+function iniciarPagina(){ 
+
     tela1 = document.querySelector('.containerprincipal');
     console.log(tela1);
     pegarQuizz();
@@ -75,15 +82,17 @@ function mostrarQuizz(resposta){
             return;
         }  
         caixa.innerHTML += `
-                <li class="quizz">
+                <li class="quizz" onclick="pegarId(${resposta.data[i].id})">
                     <img src="${resposta.data[i].image}">
                     <div>${resposta.data[i].title}</div>
                 </li>   
-            `
+            ` 
             
     }
     
 }
+
+
 
 // pega os quizz salvos na API
 function pegarQuizz(){
@@ -93,9 +102,13 @@ function pegarQuizz(){
 }
 
 function mostrarErro(){
-    alert('Deu algum erro :(');s
+    alert('Deu algum erro :(');
 }
 
+function pegarId(resposta){
+    axios.get(`${API}/${resposta}`).then(chamarResponderQuizz)
+
+}
 
 
 // Quando clica nos botões de criar novos quizzes
@@ -111,83 +124,251 @@ function chamarTela2(){
                 <input type="text" class="qnt-perguntas-form" placeholder="Quantidade de perguntas do quizz">
                 <input type="text" class="qnt-niveis-form" placeholder="Quantidade de níveis do quizz">
             </form>
-            <div class="button-form" onclick="chamarCriarPerguntas()">Prosseguir pra criar perguntas</div>
+            <div class="button-form" onclick="verificarInformações()">Prosseguir pra criar perguntas</div>
         </div>
     `
+}
+
+function verificarInformações(){
+    let text1 = document.querySelector('.titulo-form').value;
+    let url = document.querySelector('.url-form').value;
+    questions = document.querySelector('.qnt-perguntas-form').value;
+    levels = document.querySelector('.qnt-niveis-form').value;
+
+    meuQuizz = { 
+        title: text1,
+        image: url,
+        questions:0,
+        levels:0};
+
+   
+if(text1.length>=20 && text1.length<=65){
+    if(true){  //condição da url, como verificar se é uma url ? não sei
+        if(questions>=3){
+            if(levels>=2){
+                chamarCriarPerguntas()
+            } else alert('Quantidade minima de Niveis deve ser 2');
+        } else alert('Quantidade minima de perguntas deve ser 3');
+      } else alert('Insira um url valida');
+    } else alert("Seu titulo deve ter mais do que 20 e menos que 65 caracteres");
+
 }
 
 // É chamado quando o usuario clica
 function chamarCriarPerguntas(){
+
     containerPrincipal.innerHTML = 
 `
         <div class="desktop-9">
             <div class="frase">Crie suas perguntas</div>
-            <div class="pergunta">
-                <div class="numero-pergunta">Pergunta 1</div>
+            <div class="pergunta"></div>
+            <div class="button-perguntas" onclick="verificarPerguntas()">Prosseguir para criar níveis</div>
+        </div> `
+    
+    for(i=1; i<=questions; i++){
+       
+    let frase = document.querySelector('.pergunta')
+    frase.innerHTML += `
+                
+                <div class="numero-pergunta">Pergunta ${i}</div>
                 <form action="">
                     <!-- Texto e cor da pergunta -->
                     <div class="mini-container">
-                        <input type="text" placeholder="Texto da pergunta">
-                        <input type="text" placeholder="Cor de fundo da pergunta">
+                        <input type="text" class="question${i}" placeholder="Texto da pergunta">
+                        <input type="text" class ="corFundo${i}"placeholder="Cor de fundo da pergunta">
                     </div>
                     <div class="mini-container">
                         <label for="">Resposta correta</label>
-                        <input type="text" placeholder="Resposta correta">
+                        <input type="text" class="textoResposta${i}"placeholder="Resposta correta">
                         <input type="url" placeholder="URL da imagem">
                     </div>
                     <div class="mini-container">
                         <label for="">Respostas incorretas</label>
-                        <input type="text" placeholder="Resposta incorreta 1">
+                        <input type="text" class="textoErradaum${i}" placeholder="Resposta incorreta 1">
                         <input type="text" placeholder="URL da imagem 1">
                     </div>
                     <div class="mini-container">
-                        <input type="text" placeholder="Resposta incorreta 2">
+                        <input type="text" class="textoErradadois${i}" placeholder="Resposta incorreta 2">
                         <input type="text" placeholder="URL da imagem 2">
                     </div>
                     <div class="mini-container">
-                        <input type="text" placeholder="Resposta incorreta 3">
+                        <input type="text" class="textoErradatres${i}" placeholder="Resposta incorreta 3">
                         <input type="text" placeholder="URL da imagem 3">
                     </div>
                 </form>
-
-            </div>
-            <div class="button-perguntas" onclick="chamarNiveis()">Prosseguir para criar níveis</div>
-        </div>
-    `
+    `}
 }
+
+function verificarPerguntas(){
+    let vetor = [];
+    let answers_local =[];
+
+    for(i=1; i<=questions; i++){
+        
+        let textoPergunta = document.querySelector('.question'+i);
+        if(textoPergunta.value.length<20){
+            alert('O texto da pergunta deve ter mais que 20 caracteres');
+        }else {
+        textoPergunta.classList.add("checado");           
+        let corFundo = document.querySelector('.corFundo'+i);
+
+        if(corFundo.value[0]!=='#' || corFundo.value.length>7 || corFundo.value.length<7){
+            alert('A cor deve ser no formato hexadecimal, começando com # seguida de no máximo 6 caracteres');
+        }else{
+        if(false){
+
+        }else{
+        let textoResposta = document.querySelector('.textoResposta'+i);
+        if(textoResposta.value === ''){
+            alert('O campo de resposta não pode estar vazio');
+        }else { 
+            textoResposta.classList.add("checado");
+
+
+            let cont =0;
+            
+                    let textoErrada = document.querySelector('.textoErradaum'+i);             
+                    if(textoErrada.value === textoResposta.value){
+                        cont++;
+                    answers_local.push({text: textoErrada,
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true});
+                     }else{ answers_local.push({text: textoErrada,
+                            image: "https://http.cat/411.jpg",
+                            isCorrectAnswer: false});
+                     }
+                     let textoErrada2 = document.querySelector('.textoErradadois'+i);             
+                    if(textoErrada2.value === textoResposta.value){
+                        cont++;
+                    answers_local.push({text: textoErrada2,
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true});
+                     }else{ answers_local.push({text: textoErrada2,
+                            image: "https://http.cat/411.jpg",
+                            isCorrectAnswer: false});
+                     }
+                     let textoErrada3 = document.querySelector('.textoErradatres'+i);             
+                    if(textoErrada3.value === textoResposta.value){
+                        cont++;
+                    answers_local.push({text: textoErrada3,
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true});
+                     }else { answers_local.push({text: textoErrada3,
+                             image: "https://http.cat/411.jpg",
+                             isCorrectAnswer: false});
+                     }                   
+            
+            if(cont===3){   
+                alert('O quizz deve ter ao menos uma resposta incorreta')
+                return;
+              }
+           
+            
+             
+            vetor.push(  {
+                title: textoPergunta.value,
+                color: corFundo.value,
+                answers: answers_local})        
+            
+         }
+
+        }  
+      }
+     } 
+       
+    }
+    meuQuizz.questions = vetor;   
+    chamarNiveis(); 
+}   
+
 
 function chamarNiveis(){
     containerPrincipal.innerHTML = `
     <div class="desktop-10">
                 <div class="frase">Agora, decida os níveis</div>
-                <div class="pergunta">
-                    <div class="numero-pergunta">Nível 1</div>
+                <div class="pergunta"></div>
+                <div class="button-perguntas" onclick="verificarNiveis()">Finalizar Quizz</div>
+            </div>
+                `
+                for(i=1; i<=levels; i++){
+                    let level = document.querySelector('.pergunta')
+                    level.innerHTML +=  
+                    `<div class="numero-pergunta">Nível ${i}</div>
                     <form action="">
                         <div class="mini-container">
-                            <input type="text" placeholder="Título do nível">
-                            <input type="text" placeholder="% de acerto mínima">
+                            <input type="text" class="tituloNivel${i}" placeholder="Título do nível">
+                            <input type="text" class="porcentagem${i}" placeholder="% de acerto mínima">
                             <input type="text" placeholder="URL da imagem do nível">
-                            <input type="text" placeholder="Descrição do nível">
+                            <input type="text" class="descricaoNivel${i}" placeholder="Descrição do nível">
                         </div>
                     </form>
-                    <div class="pergunta icon">
+                    <!-- <div class="pergunta icon">
                         <div class="numero-pergunta">Nível 2</div>
                         <ion-icon name="create-outline" onclick="animeNiveis()"></ion-icon>
                     </div>
                     <div class="pergunta icon">
                         <div class="numero-pergunta">Nível 3</div>
                         <ion-icon name="create-outline" onclick="animeNiveis()"></ion-icon>
-                    </div>
-                    
-                </div>
-                <div class="button-perguntas" onclick="chamarQuizzPronto()">Finalizar Quizz</div>
-            </div>
+                    </div>   -->       
     `
+                }  
+                
+}   
 
+function verificarNiveis(){
+    let vetor =[];
+    let cont =0;
+    let tituloNivel =0;
+    let porcentagem =0;
+    let descricaoNivel =0;
 
+  
+    for(i=1; i<=levels; i++){
+      tituloNivel = document.querySelector('.tituloNivel'+i);
+        if(tituloNivel.value.length<10){
+            alert('O titulo deve ter no minimo 10 caracteres')
+        }else{
+               porcentagem = document.querySelector('.porcentagem'+i);
+            if(parseInt(porcentagem.value)<0 || parseInt(porcentagem.value)>100){
+                alert('% de acerto mínima deve ser um número entre 0 e 100')
+            }else{
+                if(false){
+
+                }else {
+                    
+                       descricaoNivel = document.querySelector('.descricaoNivel'+i);
+                    if(descricaoNivel.value.length<30){
+                        alert('Descrição do nível deve ter no mínimo de 30 caracteres')
+                    }else {                 
+                            let porcentagem2 = document.querySelector('.porcentagem'+i);
+                            if(parseInt(porcentagem2.value) === 0){
+                                cont++;
+                            }                          
+                        }
+                 }
+            }
+        }
+        vetor.push({
+            title: tituloNivel.value,
+            image: 0,
+            text: descricaoNivel.value,
+            minValue: porcentagem.value
+        })
+     meuQuizz.level=vetor;
+
+    } 
+    if(cont>0){
+        
+        chamarQuizzPronto();
+     }else{
+         alert('É obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%')
+         return;
+     }
 }
 
 function chamarQuizzPronto(){
+   
+
     containerPrincipal.innerHTML = `
     <div class="quizz-pronto">
         <div class="frase">Seu quizz está pronto</div>
@@ -199,6 +380,15 @@ function chamarQuizzPronto(){
         <div class="voltar-home" onclick="iniciarPagina()">Voltar pra home</div>
     </div>
     `
+    promise = axios.post('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes',meuQuizz);
+    promise.then(tratarsucesso);
+    
+}
+//Armazenando quizzes do usuario
+function tratarsucesso(retorno){
+    array.push(retorno.data.id);  
+    const exemploSerializado = JSON.stringify(array);
+    localStorage.setItem("lista", exemploSerializado);  
 }
 
 // Função de animação de edição da criação de perguntas
@@ -220,8 +410,38 @@ function animeNiveis(){
 
 
 
-function chamarTela5(){
+function chamarResponderQuizz(id){
+    console.log(id.data)
+    containerPrincipal.innerHTML = `
+        <div class="caixa-destop9">
+                <div class="subcaixa-tema">
+                    <img src="${id.data.image}" alt="">
+                    <span class="">${id.data.title}</span>
+                </div>
+                <div class="subcaixa-pergunta">
+                    <div class="titulo-pergunta">${id.data.questions[0].title}</div>
+                    <div class="perguntas">
+                        <div class="imagem-pergunta">
+                            <img src="https://images.adsttc.com/media/images/6238/5b71/3e4b/31a8/5c00/0049/newsletter/rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg?1647860579" alt="">
+                            <span>Paris</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://noomis-files-hmg.s3.amazonaws.com/content/3ad37040-6b16-11eb-8cc6-07de2463a625.jpeg" alt="">
+                            <span>Suel</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-brasilia-capa2019-01-820x430.jpg" alt="">
+                            <span>Brasilia</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-nova-york-capa2019-06.jpg" alt="">
+                            <span>Nova York</span>
+                        </div>
+                    </div>
+                    
+        
 
+    `
 }
 
 iniciarPagina();
