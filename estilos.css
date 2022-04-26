@@ -230,7 +230,11 @@ h4{
     flex-direction: column;
     align-items: center;
     width: 40%;
+    
 
+}
+.checado{
+    background-color: red;
 }
 
 .desktop-10{
