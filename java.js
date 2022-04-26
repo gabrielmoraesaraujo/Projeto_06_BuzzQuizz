@@ -3,6 +3,7 @@ const API = 'https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes';
 let tela1;
 let containerPrincipal = document.querySelector('.containerprincipal');
 let meuQuizz = {}
+let id = [];
 
 function iniciarPagina(){ 
     meuQuizz = {teste:2,
@@ -83,15 +84,17 @@ function mostrarQuizz(resposta){
             return;
         }  
         caixa.innerHTML += `
-                <li class="quizz" onclick="chamarResponderQuizz()">
+                <li class="quizz" onclick="pegarId(${resposta.data[i].id})">
                     <img src="${resposta.data[i].image}">
                     <div>${resposta.data[i].title}</div>
                 </li>   
-            `
+            ` 
             
     }
     
 }
+
+
 
 // pega os quizz salvos na API
 function pegarQuizz(){
@@ -101,9 +104,13 @@ function pegarQuizz(){
 }
 
 function mostrarErro(){
-    alert('Deu algum erro :(');s
+    alert('Deu algum erro :(');
 }
 
+function pegarId(resposta){
+    axios.get(`${API}/${resposta}`).then(chamarResponderQuizz)
+
+}
 
 
 // Quando clica nos botões de criar novos quizzes
@@ -360,19 +367,16 @@ function animeNiveis(){
 
 
 
-function chamarTela5(){
-
-}
-
-function chamarResponderQuizz(){
+function chamarResponderQuizz(id){
+    console.log(id.data)
     containerPrincipal.innerHTML = `
         <div class="caixa-destop9">
                 <div class="subcaixa-tema">
-                    <img src="https://photos.mandarinoriental.com/is/image/MandarinOriental/paris-2017-home?wid=2880&hei=1280&fmt=jpeg&crop=9,336,2699,1200&anchor=1358,936&qlt=75,0&fit=wrap&op_sharpen=0&resMode=sharp2&op_usm=0,0,0,0&iccEmbed=0&printRes=72" alt="">
-                    <span class="">O quanto voce conhece a Franca </span>
+                    <img src="${id.data.image}" alt="">
+                    <span class="">${id.data.title}</span>
                 </div>
                 <div class="subcaixa-pergunta">
-                    <div class="titulo-pergunta">Qual Capital da Franca</div>
+                    <div class="titulo-pergunta">${id.data.questions[0].title}</div>
                     <div class="perguntas">
                         <div class="imagem-pergunta">
                             <img src="https://images.adsttc.com/media/images/6238/5b71/3e4b/31a8/5c00/0049/newsletter/rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg?1647860579" alt="">
@@ -392,30 +396,7 @@ function chamarResponderQuizz(){
                         </div>
                     </div>
                     
-                </div>
-                <div class="subcaixa-pergunta">
-                    <div class="titulo-pergunta">Qual Capital da Franca</div>
-                    <div class="perguntas">
-                        <div class="imagem-pergunta">
-                            <img src="https://images.adsttc.com/media/images/6238/5b71/3e4b/31a8/5c00/0049/newsletter/rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg?1647860579" alt="">
-                            <span>Paris</span>
-                        </div>
-                        <div class="imagem-pergunta">
-                            <img src="https://noomis-files-hmg.s3.amazonaws.com/content/3ad37040-6b16-11eb-8cc6-07de2463a625.jpeg" alt="">
-                            <span>Suel</span>
-                        </div>
-                        <div class="imagem-pergunta">
-                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-brasilia-capa2019-01-820x430.jpg" alt="">
-                            <span>Brasilia</span>
-                        </div>
-                        <div class="imagem-pergunta">
-                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-nova-york-capa2019-06.jpg" alt="">
-                            <span>Nova York</span>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+        
 
     `
 }
