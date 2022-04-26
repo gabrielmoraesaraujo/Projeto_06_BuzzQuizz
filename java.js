@@ -7,6 +7,7 @@ let levels = 0;
 let  meuQuizz = {}; 
 let promise = 0;
 let array = [];
+let id = [];
 
 function iniciarPagina(){ 
 
@@ -81,15 +82,17 @@ function mostrarQuizz(resposta){
             return;
         }  
         caixa.innerHTML += `
-                <li class="quizz">
+                <li class="quizz" onclick="pegarId(${resposta.data[i].id})">
                     <img src="${resposta.data[i].image}">
                     <div>${resposta.data[i].title}</div>
                 </li>   
-            `
+            ` 
             
     }
     
 }
+
+
 
 // pega os quizz salvos na API
 function pegarQuizz(){
@@ -99,9 +102,13 @@ function pegarQuizz(){
 }
 
 function mostrarErro(){
-    alert('Deu algum erro :(');s
+    alert('Deu algum erro :(');
 }
 
+function pegarId(resposta){
+    axios.get(`${API}/${resposta}`).then(chamarResponderQuizz)
+
+}
 
 
 // Quando clica nos botões de criar novos quizzes
@@ -403,8 +410,38 @@ function animeNiveis(){
 
 
 
-function chamarTela5(){
+function chamarResponderQuizz(id){
+    console.log(id.data)
+    containerPrincipal.innerHTML = `
+        <div class="caixa-destop9">
+                <div class="subcaixa-tema">
+                    <img src="${id.data.image}" alt="">
+                    <span class="">${id.data.title}</span>
+                </div>
+                <div class="subcaixa-pergunta">
+                    <div class="titulo-pergunta">${id.data.questions[0].title}</div>
+                    <div class="perguntas">
+                        <div class="imagem-pergunta">
+                            <img src="https://images.adsttc.com/media/images/6238/5b71/3e4b/31a8/5c00/0049/newsletter/rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg?1647860579" alt="">
+                            <span>Paris</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://noomis-files-hmg.s3.amazonaws.com/content/3ad37040-6b16-11eb-8cc6-07de2463a625.jpeg" alt="">
+                            <span>Suel</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-brasilia-capa2019-01-820x430.jpg" alt="">
+                            <span>Brasilia</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-nova-york-capa2019-06.jpg" alt="">
+                            <span>Nova York</span>
+                        </div>
+                    </div>
+                    
+        
 
+    `
 }
 
 iniciarPagina();
