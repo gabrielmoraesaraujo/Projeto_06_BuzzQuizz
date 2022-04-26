@@ -83,7 +83,7 @@ function mostrarQuizz(resposta){
             return;
         }  
         caixa.innerHTML += `
-                <li class="quizz">
+                <li class="quizz" onclick="chamarResponderQuizz()">
                     <img src="${resposta.data[i].image}">
                     <div>${resposta.data[i].title}</div>
                 </li>   
@@ -362,6 +362,62 @@ function animeNiveis(){
 
 function chamarTela5(){
 
+}
+
+function chamarResponderQuizz(){
+    containerPrincipal.innerHTML = `
+        <div class="caixa-destop9">
+                <div class="subcaixa-tema">
+                    <img src="https://photos.mandarinoriental.com/is/image/MandarinOriental/paris-2017-home?wid=2880&hei=1280&fmt=jpeg&crop=9,336,2699,1200&anchor=1358,936&qlt=75,0&fit=wrap&op_sharpen=0&resMode=sharp2&op_usm=0,0,0,0&iccEmbed=0&printRes=72" alt="">
+                    <span class="">O quanto voce conhece a Franca </span>
+                </div>
+                <div class="subcaixa-pergunta">
+                    <div class="titulo-pergunta">Qual Capital da Franca</div>
+                    <div class="perguntas">
+                        <div class="imagem-pergunta">
+                            <img src="https://images.adsttc.com/media/images/6238/5b71/3e4b/31a8/5c00/0049/newsletter/rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg?1647860579" alt="">
+                            <span>Paris</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://noomis-files-hmg.s3.amazonaws.com/content/3ad37040-6b16-11eb-8cc6-07de2463a625.jpeg" alt="">
+                            <span>Suel</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-brasilia-capa2019-01-820x430.jpg" alt="">
+                            <span>Brasilia</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-nova-york-capa2019-06.jpg" alt="">
+                            <span>Nova York</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="subcaixa-pergunta">
+                    <div class="titulo-pergunta">Qual Capital da Franca</div>
+                    <div class="perguntas">
+                        <div class="imagem-pergunta">
+                            <img src="https://images.adsttc.com/media/images/6238/5b71/3e4b/31a8/5c00/0049/newsletter/rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg?1647860579" alt="">
+                            <span>Paris</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://noomis-files-hmg.s3.amazonaws.com/content/3ad37040-6b16-11eb-8cc6-07de2463a625.jpeg" alt="">
+                            <span>Suel</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-brasilia-capa2019-01-820x430.jpg" alt="">
+                            <span>Brasilia</span>
+                        </div>
+                        <div class="imagem-pergunta">
+                            <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-nova-york-capa2019-06.jpg" alt="">
+                            <span>Nova York</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+    `
 }
 
 iniciarPagina();

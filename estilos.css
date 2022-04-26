@@ -1,5 +1,6 @@
 body{
     background-color: #E5E5E5;
+    overflow-x: hidden;
 }
 .corpo{
     font-family:'Roboto';
@@ -343,7 +344,87 @@ h4{
 .voltar-home{
     color: #aeaeae;
     cursor: pointer;
+
 }
+.caixa-destop9{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subcaixa-tema { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    overflow: hidden;
+}
+.subcaixa-tema img { 
+    width: 100%;
+}
+
+.subcaixa-tema span { 
+    color: #E5E5E5;
+    font-size: 24px;
+    position: absolute;
+    left: 40%;
+    bottom: 40%;
+}
+
+.subcaixa-pergunta { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: 20px;
+}
+
+.titulo-pergunta{ 
+    margin: 10px auto;
+    color: #D1D1D1;
+    width: 100%;
+    height: 80px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.perguntas{ 
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.imagem-pergunta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+ }
+
+.imagem-pergunta img{ 
+    width: 100%;
+}
+
+.imagem-pergunta span{ 
+    margin: 10px 0;
+}
+
+.imagem-pergunta:hover{ 
+    cursor: pointer;
+}
+
+
 input{
 
     width: 95%;
@@ -366,6 +447,7 @@ input{
 
     .containerprincipal{
         flex-direction: column;
+        width: 100%;
     }
 
     .caixa{
